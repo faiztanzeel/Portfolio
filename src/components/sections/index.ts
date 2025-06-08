@@ -1,0 +1,8 @@
+export { HomeSection } from './HomeSection';
+export { AboutSection } from './AboutSection';
+export { ResumeSection } from './ResumeSection';
+export { SkillsSection } from './SkillsSection';
+export { CertificatesSection } from './CertificatesSection';
+export { ProjectsSection } from './ProjectsSection';
+export { PublicationsSection } from './PublicationsSection';
+export { ContactSection } from './ContactSection';
