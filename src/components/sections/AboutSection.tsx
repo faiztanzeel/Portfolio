@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Palette, Rocket } from 'lucide-react';
+import Lanyard from '../Lanyard'; // Adjust the import path
 
 export const AboutSection: React.FC = () => {
   const features = [
@@ -34,25 +35,23 @@ export const AboutSection: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Me</span>
           </h2>
-        
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Profile Image */}
+          {/* Lanyard Container */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative h-[400px] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-gray-700/50"
           >
-            <div className="w-full max-w-md mx-auto">
-              <div className="aspect-square bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl border border-gray-700/50 flex items-center justify-center">
-                <div className="w-48 h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-6xl font-bold text-white">
-                  FT
-                </div>
-              </div>
-            </div>
+            <Lanyard 
+              profileImagePath="./public/images/profile.jpg" // Replace with your image path
+              userName="Faiz Tanzeel"                  // Replace with your name
+              userTitle="Software Developer"                 // Replace with your title
+              companyName=" "                 // Replace with your company
+            />
           </motion.div>
 
           {/* About Text */}
