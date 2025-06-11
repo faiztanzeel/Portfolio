@@ -59,8 +59,8 @@ export const HomeSection: React.FC = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-red-400 to-purple-400 bg-clip-text text-transparent">
-                Faiz Tanzeel
+             <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                     Faiz Tanzeel
               </span>
             </motion.h1>
 
@@ -83,7 +83,7 @@ export const HomeSection: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-red-500 to-purple-500 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="px-8 py-3 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 onClick={() => {
                   console.log("View My Work clicked");
                 }}
