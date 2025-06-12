@@ -184,7 +184,7 @@ export const AboutSection: React.FC = () => {
       }}
     >
       <img 
-        src="/public/images/profile-img-removebg-preview.png" 
+        src="/images/profile-img-removebg-preview.png" 
         alt="Profile"
         className="w-full h-full object-cover"
       />
