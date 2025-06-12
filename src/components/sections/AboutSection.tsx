@@ -168,25 +168,29 @@ export const AboutSection: React.FC = () => {
             >
               {/* Profile Image Container */}
               <div className="flex justify-center mb-6">
-                <motion.div 
-                  className="relative w-48 h-48 rounded-full p-1"
-                  whileHover={{ scale: 1.05 }}
-                  style={{
-                    background: `linear-gradient(135deg, ${colors.starYellow}, ${colors.moonYellow})`,
-                    boxShadow: `0 0 30px ${colors.starYellow}40`,
-                  }}
-                >
-                  <div 
-                    className="w-full h-full rounded-full flex items-center justify-center"
-                    style={{
-                      backgroundColor: colors.neumorphBase,
-                      boxShadow: `inset 10px 10px 20px ${colors.neumorphDark}, inset -10px -10px 20px ${colors.neumorphLight}`,
-                    }}
-                  >
-                    <User size={60} style={{ color: colors.textMuted }} />
-                  </div>
-                </motion.div>
-              </div>
+  <motion.div 
+    className="relative w-48 h-48 rounded-full p-1"
+    whileHover={{ scale: 1.05 }}
+    style={{
+      background: `linear-gradient(135deg, ${colors.starYellow}, ${colors.moonYellow})`,
+      boxShadow: `0 0 30px ${colors.starYellow}40`,
+    }}
+  >
+    <div 
+      className="w-full h-full rounded-full overflow-hidden flex items-center justify-center"
+      style={{
+        backgroundColor: colors.neumorphBase,
+        boxShadow: `inset 10px 10px 20px ${colors.neumorphDark}, inset -10px -10px 20px ${colors.neumorphLight}`,
+      }}
+    >
+      <img 
+        src="/public/images/profile-img-removebg-preview.png" // Replace with your image path
+        alt="Profile"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </motion.div>
+</div>
 
               {/* Profile Info */}
               <div className="text-center space-y-4">

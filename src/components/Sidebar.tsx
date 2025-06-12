@@ -25,7 +25,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionClick 
   // Close sidebar on navigation
   const handleClick = (section: string) => {
     onSectionClick(section);
-    setIsMobileMenuOpen(false); // Close mobile menu after click
+    setIsMobileMenuOpen(false);
   };
 
   // Lock body scroll when sidebar is open on mobile
@@ -41,13 +41,35 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionClick 
     <>
       {/* Hamburger Button (Mobile Only) */}
       <button
-        className="fixed top-4 left-4 z-50 p-2 rounded-xl bg-transparent text-white shadow-md lg:hidden"
-        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        className="fixed top-4 right-4 z-50 p-3 rounded-full bg-transparent backdrop-blur-md  text-white shadow-lg lg:hidden"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
-        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        <AnimatePresence mode="wait">
+          {isMobileMenuOpen ? (
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <X size={20} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="menu"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Menu size={20} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </button>
 
-      {/* Desktop Sidebar */}
+      {/* Desktop Sidebar - Keep as is */}
       <div className="hidden lg:flex fixed left-6 top-1/2 transform -translate-y-1/2 z-50 flex-col space-y-3">
         {navigationItems.map((item, index) => {
           const Icon = item.icon;
@@ -103,38 +125,67 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionClick 
         })}
       </div>
 
-      {/* Mobile Sidebar Drawer */}
+      {/* Mobile Menu - Glass effect */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ x: -250, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: -250, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 h-full w-64 bg-gray-900/95 p-6 z-40 border-r border-gray-700 flex flex-col space-y-5 backdrop-blur-xl lg:hidden"
-          >
-            {navigationItems.map((item, index) => {
-              const Icon = item.icon;
-              const isActive = activeSection === item.id;
-              return (
-                <motion.button
-                  key={item.id}
-                  onClick={() => handleClick(item.id)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-md transition-all duration-300 text-left ${
-                    isActive
-                      ? 'bg-gradient-to-r from-red-500/90 to-purple-500/90 text-white'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
-                  }`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Icon size={22} />
-                  <span className="text-sm font-medium">{item.label}</span>
-                </motion.button>
-              );
-            })}
-          </motion.div>
+          <>
+            {/* Backdrop with blur */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Glass Menu */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="fixed right-0 top-0 h-full w-72 bg-white/10 backdrop-blur-xl border-l border-white/20 z-40 lg:hidden"
+            >
+              <div className="h-full flex flex-col pt-20 px-6 pb-6">
+                {/* Title */}
+                <h2 className="text-white/80 text-sm font-medium mb-6 px-4">MENU</h2>
+                
+                {/* Navigation Pills */}
+                <div className="flex-1 space-y-2">
+                  {navigationItems.map((item, index) => {
+                    const Icon = item.icon;
+                    const isActive = activeSection === item.id;
+                    return (
+                      <motion.button
+                        key={item.id}
+                        onClick={() => handleClick(item.id)}
+                        className={`w-full flex items-center gap-4 px-6 py-4 rounded-full transition-all duration-300 ${
+                          isActive
+                            ? 'bg-gradient-to-r from-red-500 to-purple-500 text-white shadow-lg'
+                            : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
+                        }`}
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Icon size={20} />
+                        <span className="font-medium">{item.label}</span>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                {/* Footer */}
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <p className="text-white/40 text-xs text-center">
+                    © 2025 Faiz Tanzeel Portfolio
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

@@ -6,3 +6,4 @@ export { CertificatesSection } from './CertificatesSection';
 export { ProjectsSection } from './ProjectsSection';
 export { PublicationsSection } from './PublicationsSection';
 export { ContactSection } from './ContactSection';
+export { default as FooterSection } from './FooterSection';

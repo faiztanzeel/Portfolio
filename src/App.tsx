@@ -9,7 +9,8 @@ import {
   CertificatesSection,
   ProjectsSection,
   PublicationsSection,
-  ContactSection
+  ContactSection,
+  FooterSection
 } from './components/sections';
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
           <ProjectsSection />
           <PublicationsSection />
           <ContactSection />
+          <FooterSection/>
         </motion.div>
       </main>
     </div>
