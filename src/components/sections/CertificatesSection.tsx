@@ -38,71 +38,104 @@ const colors = {
 };
 
 export const CertificatesSection: React.FC = () => {
-  const certificates = [
+ const certificates = [
     {
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "2023",
+      title: "Figma for UX Design",
+      issuer: "LinkedIn Learning",
+      date: "2020",
       description:
-        "Professional-level certification demonstrating expertise in designing distributed systems on AWS.",
+        "Comprehensive course on using Figma for UX design, including prototyping and collaboration.",
       badge:
-        "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "#",
+        "/images/certificates/portfolio-7.jpg",
+      link: "/images/certificates/portfolio-7.jpg",
       color: colors.accentPurple,
     },
     {
-      title: "Google Cloud Professional Developer",
-      issuer: "Google Cloud",
-      date: "2023",
+      title: "Leaning React.js",
+      issuer: "LinkedIn Learning",
+      date: "2020",
       description:
-        "Demonstrates proficiency in building scalable applications using Google Cloud technologies.",
+        "Deep dive into React.js fundamentals, including components, state management, and hooks.",
       badge:
-        "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "#",
+        "/images/certificates/portfolio-8.jpg",
+      link: "/images/certificates/portfolio-8.jpg",
       color: colors.accentBlue,
     },
     {
-      title: "React Advanced Certification",
-      issuer: "Meta (Facebook)",
-      date: "2022",
+      title: "Docker Introduction, Docker Networking",
+      issuer: "RangeForce",
+      date: "2020",
       description:
-        "Advanced React concepts including hooks, context, performance optimization, and testing.",
+        "Introduction to Docker and its networking capabilities, including containerization and orchestration.",
       badge:
-        "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "#",
+        "/images/certificates/portfolio-9.jpg",
+      link: "/images/certificates/portfolio-9.jpg",
       color: colors.accentCyan,
     },
     {
-      title: "Kubernetes Administrator (CKA)",
-      issuer: "Cloud Native Computing Foundation",
-      date: "2022",
+      title: "Continuous Delivery & DevOps",
+      issuer: "Coursera",
+      date: "2020",
       description:
-        "Demonstrates skills required to be a successful Kubernetes Administrator in industry today.",
+        "Understanding of continuous delivery and DevOps practices for software development and deployment.",
       badge:
-        "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "#",
+        "/images/certificates/portfolio-4.jpg",
+      link: "/images/certificates/portfolio-4.jpg",
       color: colors.starYellow,
     },
     {
-      title: "MongoDB Certified Developer",
-      issuer: "MongoDB University",
-      date: "2021",
+      title: "Become a User Experience Designer",
+      issuer: "LinkedIn Learning",
+      date: "2020",
       description:
-        "Comprehensive understanding of MongoDB database design, development, and deployment.",
+        "Comprehensive course on user experience design principles, research methods, and prototyping.",
       badge:
-        "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "#",
+        "/images/certificates/portfolio-5.jpg",
+      link: "/images/certificates/portfolio-5.jpg",
       color: colors.accentPurple,
     },
     {
-      title: "Scrum Master Certified",
-      issuer: "Scrum Alliance",
-      date: "2021",
+      title: "Social media marketing",
+      issuer: "LinkedIn Learning",
+      date: "2020",
       description:
-        "Certified in Agile methodologies and Scrum framework for effective project management.",
+        "In-depth course on social media marketing strategies, including content creation and analytics.",
       badge:
-        "https://images.pexels.com/photos/2148217/pexels-photo-2148217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "#",
+        "/images/certificates/portfolio-6.jpg",
+      link: "/images/certificates/portfolio-6.jpg",
+      color: colors.accentBlue,
+    },
+    {
+      title: "Web Development",
+      issuer: "Internshala",
+      date: "2019",
+      description:
+        "Demonstrates skills in HTML, CSS, Bootstrap, SQL and PHP for web development.",
+      badge:
+        "/images/certificates/portfolio-1.jpg",
+      link: "/images/certificates/portfolio-1.jpg",
+      color: colors.starYellow,
+    },
+    {
+      title: "Competitive Programming C++",
+      issuer: "CipherSchools",
+      date: "2020",
+      description:
+        "Comprehensive understanding of C++ programming for competitive coding challenges.",
+      badge:
+        "/images/certificates/portfolio-2.jpg",
+      link: "/images/certificates/portfolio-2.jpg",
+      color: colors.accentPurple,
+    },
+    {
+      title: "The fundamentals of digital marketing",
+      issuer: "Google Digital Garage",
+      date: "2020",
+      description:
+        "Certified in digital marketing fundamentals including SEO, SEM, and social media.",
+      badge:
+        "/images/certificates/portfolio-3.jpg",
+      link: "/images/certificates/portfolio-3.jpg",
       color: colors.accentBlue,
     },
   ];
@@ -393,9 +426,9 @@ export const CertificatesSection: React.FC = () => {
           className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8"
         >
           {[
-            { number: "12+", label: "Certifications", icon: Award },
-            { number: "3", label: "Cloud Platforms", icon: Shield },
-            { number: "5+", label: "Years Experience", icon: Star },
+            { number: "50+", label: "Certifications", icon: Award },
+            { number: "8+", label: "Learning Platforms", icon: Shield },
+            { number: "3+", label: "Years Experience", icon: Star },
             { number: "100%", label: "Valid Certificates", icon: CheckCircle },
           ].map((stat, index) => (
             <motion.div

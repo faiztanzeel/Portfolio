@@ -11,23 +11,33 @@ import {
   Terminal,
   Code2,
 } from "lucide-react";
-import LetterGlitch from "../LetterGlitch"; // Adjust the import path as needed
+import LetterGlitch from "../LetterGlitch";
+import emailjs from '@emailjs/browser';
+import { SiLeetcode } from "react-icons/si";
+import { FaGithub } from "react-icons/fa";
 
 export const ContactSection: React.FC = () => {
+  // ALL STATE VARIABLES MUST BE INSIDE THE COMPONENT
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
+  
   const fullText = "// Let's create something extraordinary together";
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("jyJ4USuluk2htbLBa"); 
+  }, []);
 
   // Typing animation effect
   useEffect(() => {
@@ -41,7 +51,7 @@ export const ContactSection: React.FC = () => {
         setIsTyping(false);
       }, 1000);
     }
-  }, [typedText, isTyping]);
+  }, [typedText, isTyping, fullText]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -58,9 +68,40 @@ export const ContactSection: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsLoading(true);
+    setStatusMessage('');
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'tanzeelfaiz@gmail.com',
+      };
+
+      await emailjs.send(
+        'service_qr1z0yp',
+        'template_3a4eqdr',
+        templateParams
+      );
+
+      setStatusMessage('Message sent successfully! 🚀');
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setStatusMessage('Failed to send message. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -84,16 +125,16 @@ export const ContactSection: React.FC = () => {
       icon: MapPin,
       label: "Location",
       value: "Gurugram, India",
-      href: "#",
+      href: "https://www.google.com/maps/place/Gurugram,+Haryana,+India/@28.4231877,76.8478681,11z",
       code: "const location = ",
       color: "from-orange-500 to-red-500",
     },
   ];
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub", color: "#6e5494" },
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "#0077b5" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "#1da1f2" },
+    { icon: FaGithub, href: "https://github.com/faiztanzeel", label: "GitHub", color: "#6e5494" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/faiztanzeelansari/", label: "LinkedIn", color: "#0077b5" },
+    { icon: SiLeetcode, href: "https://www.linkedin.com/in/faiztanzeelansari/", label: "LeetCode", color: "#1da1f2" },
   ];
 
   return (
@@ -326,62 +367,68 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </motion.div>
 
-                <motion.button
-                  type="submit"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.6 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="relative w-full flex items-center justify-center gap-3 px-8 py-5 rounded-2xl font-bold text-white overflow-hidden group backdrop-blur-sm"
-                  style={{
-                    background: "linear-gradient(145deg, rgba(26,26,26,0.9), rgba(15,15,15,0.9))",
-                    boxShadow: "8px 8px 16px #0a0a0a, -8px -8px 16px #2a2a2a",
-                  }}
-                >
-                  {/* Animated gradient background */}
-                  <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background:
-                        "linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #6366f1)",
-                      backgroundSize: "300% 300%",
-                    }}
-                    animate={{
-                      backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                  />
+               <motion.button
+  type="submit"
+  disabled={isLoading} // Add this
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5, duration: 0.6 }}
+  viewport={{ once: true }}
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+  className="relative w-full flex items-center justify-center gap-3 px-8 py-5 rounded-2xl font-bold text-white overflow-hidden group backdrop-blur-sm"
+  style={{
+    background: "linear-gradient(145deg, rgba(26,26,26,0.9), rgba(15,15,15,0.9))",
+    boxShadow: "8px 8px 16px #0a0a0a, -8px -8px 16px #2a2a2a",
+  }}
+>
+  {/* Animated gradient background */}
+  <motion.div
+    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+    style={{
+      background:
+        "linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #6366f1)",
+      backgroundSize: "300% 300%",
+    }}
+    animate={{
+      backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      ease: "linear",
+    }}
+  />
 
-                  <span className="relative z-10 font-mono">sendMessage()</span>
-                  <Send className="relative z-10 w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </motion.button>
+  <span className="relative z-10 font-mono">
+    {isLoading ? 'sending...' : 'sendMessage()'}
+  </span>
+  <Send className={`relative z-10 w-5 h-5 ${
+    isLoading ? 'animate-pulse' : 'group-hover:translate-x-1 group-hover:-translate-y-1'
+  } transition-transform`} />
+</motion.button>
               </form>
 
               {/* Decorative code snippet */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-                viewport={{ once: true }}
-                className="mt-6 p-4 rounded-lg bg-black/30 font-mono text-xs backdrop-blur-sm"
-              >
-                <span className="text-gray-500">// Response</span>
-                <br />
-                <span className="text-green-400">console</span>
-                <span className="text-white">.</span>
-                <span className="text-yellow-400">log</span>
-                <span className="text-white">(</span>
-                <span className="text-cyan-400">
-                  "Message sent successfully! 🚀"
-                </span>
-                <span className="text-white">);</span>
-              </motion.div>
+             {/* Decorative code snippet */}
+<motion.div
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 0.7, duration: 0.6 }}
+  viewport={{ once: true }}
+  className="mt-6 p-4 rounded-lg bg-black/30 font-mono text-xs backdrop-blur-sm"
+>
+  <span className="text-gray-500">// Response</span>
+  <br />
+  <span className="text-green-400">console</span>
+  <span className="text-white">.</span>
+  <span className="text-yellow-400">log</span>
+  <span className="text-white">(</span>
+  <span className={statusMessage.includes('successfully') ? 'text-green-400' : 'text-cyan-400'}>
+    "{statusMessage || 'Waiting for message...'}"
+  </span>
+  <span className="text-white">);</span>
+</motion.div>
             </div>
           </motion.div>
 
