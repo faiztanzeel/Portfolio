@@ -7,9 +7,9 @@ import Balatro from "../BalatroBackground";
 
 export const HomeSection: React.FC = () => {
   const socialLinks = [
-    "https://github.com/your-github",
-    "https://linkedin.com/in/your-linkedin",
-    "mailto:your.email@example.com",
+    "https://github.com/faiztanzeel",
+    "https://www.linkedin.com/in/faiztanzeelansari/",
+    "mailto:tanzeelfaiz@gmail.com",
   ];
 
   return (
@@ -85,14 +85,19 @@ export const HomeSection: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 onClick={() => {
-                  console.log("View My Work clicked");
-                }}
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error('Projects section not found');
+    }
+  }}
               >
                 View My Work
               </motion.button>
 
               <motion.a
-                href="/Faiz_Tanzeel_Resume.pdf"
+                href="https://drive.google.com/file/d/1ypW-7lZSMuurYKWAFDQaw0htRW9epOqj/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -132,17 +137,22 @@ export const HomeSection: React.FC = () => {
 
         {/* Desktop only ProfileCard */}
         <div className="hidden lg:block flex-shrink-0">
-          <ProfileCard
-            name="Faiz Tanzeel"
-            title="Frontend Developer"
-            handle="tanzeelfaiz"
-            status="Available"
-            contactText="Contact Me"
-            avatarUrl="/images/profile-img-removebg-preview.png"
-            showUserInfo={true}
-            enableTilt={true}
-            onContactClick={() => alert("Contact clicked!")}
-          />
+       <ProfileCard
+  name="Faiz Tanzeel"
+  title="Frontend Developer"
+  handle="tanzeelfaiz"
+  status="Available"
+  contactText="Contact Me"
+  avatarUrl="/images/profile-img-removebg-preview.png"
+  showUserInfo={true}
+  enableTilt={true}
+  onContactClick={() => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }}
+/>
         </div>
       </div>
 

@@ -252,9 +252,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
-  const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
+const handleContactClick = useCallback(() => {
+  const contactSection = document.getElementById('contact');
+  if (contactSection) {
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}, []);
 
   return (
     <div
