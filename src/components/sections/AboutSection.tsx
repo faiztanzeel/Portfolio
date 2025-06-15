@@ -57,7 +57,7 @@ export const AboutSection: React.FC = () => {
     }
   ];
 
-  const skills = ['React', 'TypeScript', 'Node.js', 'Python', 'AWS', 'Docker'];
+  const skills = ['React', 'TypeScript', 'Node.js', 'JavaScript'];
 
   return (
     <section id="about" className="relative min-h-screen py-20 px-6 overflow-hidden">
@@ -219,7 +219,7 @@ export const AboutSection: React.FC = () => {
 
                 {/* Social Links */}
                 <div className="flex justify-center gap-4 pt-4">
-                  {['GitHub', 'LinkedIn', 'Twitter'].map((social) => (
+                  {['Learning', 'Designing', 'Developing'].map((social) => (
                     <motion.button
                       key={social}
                       whileHover={{ scale: 1.1 }}
@@ -263,14 +263,15 @@ export const AboutSection: React.FC = () => {
               }}
             >
               <p className="text-lg leading-relaxed mb-4" style={{ color: colors.textSecondary }}>
-                I'm a passionate full-stack developer who loves turning complex problems into 
-                simple, beautiful, and intuitive solutions. When I'm not coding, you'll find me 
-                exploring new technologies, contributing to open source, or sharing knowledge with the community.
+               I'm a passionate full-stack developer who thrives on transforming complex challenges into elegant, user-friendly solutions. 
+               With a strong eye for detail and a love for clean, maintainable code, I specialize in building performant web and 
+               mobile applications.When I’m not coding, you’ll find me exploring emerging technologies,
+               contributing to open-source projects.
               </p>
               
               <p className="text-lg leading-relaxed" style={{ color: colors.textSecondary }}>
-                My expertise spans across modern web technologies, including React, Node.js, TypeScript, 
-                and cloud platforms. I believe in writing clean, maintainable code and creating 
+                My expertise spans across modern web technologies, including React, Node.js, JavaScript, TypeScript, 
+                and UI/UX. I believe in writing clean, maintainable code and creating 
                 user experiences that truly matter.
               </p>
             </div>
@@ -371,9 +372,9 @@ export const AboutSection: React.FC = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
-            { label: 'Years Experience', value: '5+' },
-            { label: 'Projects Completed', value: '50+' },
-            { label: 'Happy Clients', value: '30+' },
+            { label: 'Years Experience', value: '3+' },
+            { label: 'Projects Completed', value: '20+' },
+            { label: 'Happy Clients', value: '6+' },
             { label: 'Lines of Code', value: '100K+' },
           ].map((stat, index) => (
             <motion.div

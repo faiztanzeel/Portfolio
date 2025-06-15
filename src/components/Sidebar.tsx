@@ -70,7 +70,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionClick 
       </button>
 
       {/* Desktop Sidebar - Keep as is */}
-      <div className="hidden lg:flex fixed left-6 top-1/2 transform -translate-y-1/2 z-50 flex-col space-y-3">
+      <div className="hidden lg:flex fixed left-6 top-1/2 transform -translate-y-1/2 z-50 flex-col space-y-3
+      ">
         {navigationItems.map((item, index) => {
           const Icon = item.icon;
           const isActive = activeSection === item.id;
@@ -90,7 +91,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection, onSectionClick 
                 onClick={() => handleClick(item.id)}
                 className={`relative flex items-center justify-center rounded-full backdrop-blur-xl border shadow-lg overflow-hidden transition-colors duration-300 ${
                   isActive
-                    ? 'bg-gradient-to-r from-red-500/90 to-purple-500/90 text-white border-red-400/50 shadow-black'
+                    ? 'bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text  text-white border-red-400/50 shadow-black'
                     : 'bg-gray-900/80 text-gray-400 hover:text-white border-gray-700/50 hover:border-gray-600/50 hover:bg-gray-800/90'
                 }`}
                 layout

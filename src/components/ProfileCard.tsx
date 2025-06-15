@@ -252,12 +252,27 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
-const handleContactClick = useCallback(() => {
-  const contactSection = document.getElementById('contact');
-  if (contactSection) {
-    contactSection.scrollIntoView({ behavior: 'smooth' });
-  }
-}, []);
+  const handleContactClick = useCallback(() => {
+    console.log("ProfileCard handleContactClick called"); // Debug log
+    
+    // If a custom onContactClick is provided, use it
+    if (onContactClick) {
+      console.log("Using custom onContactClick");
+      onContactClick();
+    } else {
+      // Default behavior - scroll to contact section
+      console.log("Using default scroll behavior");
+      const contactSection = document.getElementById('contact');
+      console.log("Contact section found:", contactSection); // Debug log
+      
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        console.log("Scrolling to contact section");
+      } else {
+        console.error('Contact section with id="contact" not found in the DOM');
+      }
+    }
+  }, [onContactClick]);
 
   return (
     <div
@@ -282,7 +297,7 @@ const handleContactClick = useCallback(() => {
                 draggable={false}
               />
             ) : (
-              <div className="avatar-placeholder" aria-hidden="true" />
+                            <div className="avatar-placeholder" aria-hidden="true" />
             )}
             {showUserInfo && (
               <div className="pc-user-info">

@@ -12,6 +12,16 @@ export const HomeSection: React.FC = () => {
     "mailto:tanzeelfaiz@gmail.com",
   ];
 
+  // Create a reusable scroll function
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error('Contact section not found');
+    }
+  };
+
   return (
     <section
       id="home"
@@ -36,7 +46,7 @@ export const HomeSection: React.FC = () => {
             avatarUrl="/images/profile-img-removebg-preview.png"
             showUserInfo={true}
             enableTilt={true}
-            onContactClick={() => alert("Contact clicked!")}
+            onContactClick={scrollToContact}
           />
         </div>
 
@@ -85,13 +95,13 @@ export const HomeSection: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
                 onClick={() => {
-    const projectsSection = document.getElementById('projects');
-    if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      console.error('Projects section not found');
-    }
-  }}
+                  const projectsSection = document.getElementById('projects');
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    console.error('Projects section not found');
+                  }
+                }}
               >
                 View My Work
               </motion.button>
@@ -137,22 +147,17 @@ export const HomeSection: React.FC = () => {
 
         {/* Desktop only ProfileCard */}
         <div className="hidden lg:block flex-shrink-0">
-       <ProfileCard
-  name="Faiz Tanzeel"
-  title="Frontend Developer"
-  handle="tanzeelfaiz"
-  status="Available"
-  contactText="Contact Me"
-  avatarUrl="/images/profile-img-removebg-preview.png"
-  showUserInfo={true}
-  enableTilt={true}
-  onContactClick={() => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }}
-/>
+          <ProfileCard
+            name="Faiz Tanzeel"
+            title="Frontend Developer"
+            handle="tanzeelfaiz"
+            status="Available"
+            contactText="Contact Me"
+            avatarUrl="/images/profile-img-removebg-preview.png"
+            showUserInfo={true}
+            enableTilt={true}
+            onContactClick={scrollToContact}
+          />
         </div>
       </div>
 

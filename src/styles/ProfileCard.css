@@ -273,6 +273,9 @@
   cursor: pointer;
   transition: all 0.2s ease;
   backdrop-filter: blur(10px);
+   pointer-events: auto !important;  /* ADD THIS */
+  position: relative;  /* ADD THIS */
+  z-index: 10;  /* ADD THIS */
 }
 
 .pc-contact-btn:hover {
