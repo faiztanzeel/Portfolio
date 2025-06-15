@@ -12,7 +12,7 @@ import {
   ContactSection,
   FooterSection
 } from './components/sections';
-
+import SplashCursor from './components/SplashCursor';
 function App() {
   const [activeSection, setActiveSection] = useState('home');
 
@@ -49,11 +49,13 @@ function App() {
       <Sidebar activeSection={activeSection} onSectionClick={scrollToSection} />
       
       <main>
+        <SplashCursor/>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
+           
           <HomeSection />
           <AboutSection />
           <ResumeSection />
