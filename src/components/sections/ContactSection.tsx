@@ -733,8 +733,8 @@ export const ContactSection: React.FC = () => {
 
         input:focus,
         textarea:focus {
-          box-shadow: inset 4px 4px 8px #0f0f0f, inset -4px -4px 8px #252525,
-            0 0 0 2px rgba(139, 92, 246, 0.3);
+          box-shadow: inset 4px 4px 8pxrgb(245, 14, 14), inset -4px -4px 8pxrgb(172, 59, 59),
+            0 0 0 2px #603bb7;
         }
 
         /* Custom scrollbar */

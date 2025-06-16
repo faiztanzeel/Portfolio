@@ -7,4 +7,5 @@ export { ProjectsSection } from './ProjectsSection';
 export { PublicationsSection } from './PublicationsSection';
 export { ContactSection } from './ContactSection';
 export { default as FooterSection } from './FooterSection';
-export { default as SplashCursor } from '../SplashCursor';
+// export { default as SplashCursor } from '../SplashCursor';
+// export { default as ClickSpark } from '../ClickSpark';
